@@ -65,7 +65,7 @@ t_map movePlayer(t_map m, char ch)
 }
 
 t_map init_map(t_map m)
-{
+{   /*Creating a map*/
     for (int i = 0; i < MAX_C ; i++)
     {
         m.map[i][MIN_L] = '*';
@@ -86,15 +86,23 @@ t_map init_map(t_map m)
         printf("*");
     }
     
+    //Score
     m.score = 0;
+    gotoxy(35, 10);
+    printf("SCORE: %d", m.score);
+
+    //Starting player position 
     m.player.pos.x = 1;
     m.player.pos.y = 1;
-    m.chest.pos.x = rand() % 28 + 1;
-    m.chest.pos.y = rand() % 18 + 1;
+    //Starting chest position
+    m.chest.pos.x = 20;
+    m.chest.pos.y = 15;
 
+    //Writing the player and chest position in memory
     m.map[m.player.pos.x][m.player.pos.y] = '@';
     m.map[m.chest.pos.x][m.chest.pos.y] = 'O';
 
+    //Show in screen the positions
     gotoxy(m.chest.pos.x, m.chest.pos.y);
     printf("O");
     gotoxy(m.player.pos.x, m.player.pos.y);
@@ -112,11 +120,15 @@ t_map get_chest(t_map m)
         m.score++;
         gotoxy(35, 10);
         printf("SCORE: %d", m.score);
-        m.player.pos.x = 1;
-        m.player.pos.y = 1;
-        m.chest.pos.x = rand() % 28 + 1;
-        m.chest.pos.y = rand() % 18 + 1;
-
+        m.player.pos.x = rand() % 28 + 1;
+        m.player.pos.y = rand() % 18 + 1;
+        
+        do
+        {
+            m.chest.pos.x = rand() % 28 + 1;
+            m.chest.pos.y = rand() % 18 + 1;
+        }while (m.player.pos.x == m.chest.pos.x && m.player.pos.y == m.chest.pos.y);
+        
         m.map[m.player.pos.x][m.player.pos.y] = '@';
         m.map[m.chest.pos.x][m.chest.pos.y] = 'O';
 
