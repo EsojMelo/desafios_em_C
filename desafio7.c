@@ -92,7 +92,9 @@ t_map init_map(t_map m)
     m.score = 0;
     gotoxy(35, 10);
     printf("SCORE: %d", m.score);
-
+    //Exit the game
+    gotoxy(35, 9);
+    printf("Press 'q' to exit the game");
     //Starting player position 
     m.player.pos.x = 1;
     m.player.pos.y = 1;
