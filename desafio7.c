@@ -6,7 +6,7 @@ int main(void)
     srand(time(NULL));
 
     t_map m;
-    char ch = ' ';
+    char ch = ' '; //'ch' get the keyboard keys to move the '@'
     m = init_map(m);
 
     while (ch != 'q')
@@ -20,7 +20,8 @@ int main(void)
     return EXIT_SUCCESS;
 }
 
-void gotoxy(int x,int  y)
+/*this fuction get a screen coordenates, get a exactly sorted pixel and move the cursor till the position */
+void gotoxy(int x,int  y) //use some functions in windows
 {
     COORD c;
     c.X=x;
@@ -28,6 +29,7 @@ void gotoxy(int x,int  y)
     SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), c);
 }
 
+/*Move the player*/
 t_map movePlayer(t_map m, char ch)
 {
     int prev_x = m.player.pos.x;
@@ -111,6 +113,7 @@ t_map init_map(t_map m)
     return m;
 }
 
+/*When a get the chest a reset the positions and get a new rand positions*/
 t_map get_chest(t_map m)
 {
     if (m.map[m.chest.pos.x][m.chest.pos.y] == '@' )

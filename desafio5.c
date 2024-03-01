@@ -1,3 +1,4 @@
+/*Brifing: digits number counter*/
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
@@ -15,15 +16,15 @@ int main(void)
         scanf(" %lld", &num);
         countNum(num);
         
-        printf("\nDo you wanna try another operation [e - exit / c - continue]\n");
+        printf("\nDo you wanna try another operation [e - exit / c - continue]: ");
         scanf(" %s", &exit);
         exit = tolower(exit);
     }
 
     return EXIT_SUCCESS;
 }
-
-void countNum(long long int number)
+/*count each place in number*/
+void countNum(long long int number) 
 {
     int sum = 0;
     
@@ -32,10 +33,10 @@ void countNum(long long int number)
     
     else 
     {
-        while (number >= 1)
+        while (number >= 1) //This function split the number by 10 until it get no place/cell in integer number
         {
             sum++;
-            number = number / 10;
+            number = number / 10; 
         }
     
         printf("\nThis number have %d digit\n", sum);

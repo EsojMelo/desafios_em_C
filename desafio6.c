@@ -1,7 +1,7 @@
+/*Briefing: It make a sum of the even firts numbers of Fibonacci serie.*/
 #include <stdio.h>
 #include <stdlib.h>
 
-//fazer uma soma dos 200 primeiros números pares da sequência de Fibonacci.
 
 int main(void)
 {
@@ -10,8 +10,8 @@ int main(void)
     double ant = 0;
     double pos = 0 , soma = 0;;
     int cont = 0;
-    long long int div = 0;
-    //process
+    int div = 1;
+    /*Only count if the number is even */
     while (cont < 200 )
     {
         pos = i + ant;
@@ -21,15 +21,17 @@ int main(void)
         }
         ant = i;
         i = pos;
-        div = pos;
-        if (div % 2 == 0)
+        div++;
+        if (div > 2) // This series have a logical sequence, each 2 odds numbers the next is even
         {
             soma += i;
             cont++;
+            div = 0;
+            printf(" %.0f\n", i);
         }
     }
-    //print da soma dos valores
-    printf("\nsoma: %f ", soma);
+    //print the values sum
+    printf("\nsoma: %.0f ", soma); //it don't have a great precision but is valid
     printf("\ncont: %d\n", cont);
     
     return EXIT_SUCCESS;

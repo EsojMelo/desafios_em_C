@@ -1,3 +1,4 @@
+/*Briefing: Check the prime number*/
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
@@ -22,7 +23,7 @@ int main(void)
     return EXIT_SUCCESS;
 }
 
-//Faz o número ser verificado entre ser primo ou não
+/*Verify if the number is prime or not*/
 void primeNumber(void)
 {
     int number;
@@ -32,22 +33,22 @@ void primeNumber(void)
     printf("\nChoose a number: ");
     scanf(" %d", &choose);
     if (choose == 0)
-        printf("\nchoose another non zero number");
+        printf("\nchoose another non zero number"); //zero is not valid
     
     else
     {
         for ( number = 1; number < choose ; number++)
         {    
             if (choose % number == 0)
-                nonPrimeCount++;
-            if (nonPrimeCount > 1)
+                nonPrimeCount++; //Counter of divisions
+            if (nonPrimeCount > 1)/*if nonPrimeCount exceed 1 this is not prime*/
             {
                 printf("\nThe choosed number IS NOT prime");
                 break;
             }
         }
         
-        if (nonPrimeCount == 1 || choose == 1)
+        if (nonPrimeCount == 1 || choose == 1)// the number 1 is prime
             printf("\nThe choosed number IS prime");
     }
 }

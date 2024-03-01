@@ -1,25 +1,26 @@
+/*Briefing: Calculator [+] [-] [x] [/] between 2 numbers */
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
 
 char menu(void);
-void sum(int a, int b);
-void sub(int a, int b);
-void mult(int a, int b);
-void divi(int a, int b);
+void sum(float a, float b);
+void sub(float a, float b);
+void mult(float a, float b);
+void divi(float a, float b);
 
-int main(void)
+float main(void)
 {
     char choose;
-    int a, b;
+    float a, b;
     char exit = ' ';
 
     while(exit != 'e')
     {
         printf("\nNumber 1: ");
-        scanf(" %d", &a);
+        scanf(" %f", &a);
         printf("\nNumber 2: ");
-        scanf(" %d", &b);
+        scanf(" %f", &b);
 
         choose = menu();
         if (choose == '+')
@@ -30,11 +31,14 @@ int main(void)
             mult(a, b);
         if (choose == '/')
         {
-            while (b == 0)
+            while (b == 0) //Is not valid split a number by 0
             {
                 printf("The second number cannot be 0 in divisor way\n");
-                printf("Choose another one to second number: ");
-                scanf(" %d", &b);
+                printf("Change the values\n");
+                printf("\nNumber 1: ");
+                scanf(" %f", &a);
+                printf("\nNumber 2: ");
+                scanf(" %f", &b);
             }
             
             divi(a, b);
@@ -61,27 +65,27 @@ char menu(void)
     scanf(" %s", &operator);
     return operator;
 }
-
-void sum(int a, int b)
+/*Sum equation*/
+void sum(float a, float b)
 {
-    int sum = a + b;
-    printf("%d + %d = %d\n", a, b, sum);
+    float sum = a + b;
+    printf("%.2f + %.2f = %.2f\n", a, b, sum);
 }
-
-void sub(int a, int b)
+/*subtraction equation*/
+void sub(float a, float b)
 {
-    int sub = a - b;
-    printf("%d - %d = %d\n", a, b, sub);
+    float sub = a - b;
+    printf("%.2f - %.2f = %.2f\n", a, b, sub);
 }
-
-void mult(int a, int b)
+/*multiplication equation*/
+void mult(float a, float b)
 {
-    int mult = a * b;
-    printf("%d x %d = %d\n", a, b, mult);
+    float mult = a * b;
+    printf("%.2f x %.2f = %.2f\n", a, b, mult);
 }
-
-void divi(int a, int b)
+/*division equation*/
+void divi(float a, float b)
 {
-    int div = a / b;
-    printf("%d / %d = %d\n", a, b, div);
+    float div = a / b;
+    printf("%.2f / %.2f = %.2f\n", a, b, div);
 }

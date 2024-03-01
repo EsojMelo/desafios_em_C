@@ -1,3 +1,4 @@
+/*Briefing: sort the type of triangle by the sides*/
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
@@ -11,10 +12,10 @@ int main(void)
 {
     char exit = ' ';
 
-    while (exit != 's')
+    while (exit != 'q') //run the function until you don't need more
     {
         triangle();
-        printf("\n\nVocê quer testar outros valores [s - sair / c - continuar] ?");
+        printf("\n\nDo you wanna test another values [q - quit / c - continue] ?");
         scanf(" %c", &exit);
         exit = tolower(exit);
     }
@@ -24,44 +25,45 @@ int main(void)
 
 void triangle(void)
 {
-    float lado1, lado2, lado3;
-    float hipotenusa1;
-    float hipotenusa2;
-    float hipotenusa3;
+    float side1, side2, side3;
+    float hypotenuse1;
+    float hypotenuse2;
+    float hypotenuse3;
 
-    printf("\nLado 1: ");
-    scanf(" %f", &lado1);
-    printf("\nLado 2: ");
-    scanf(" %f", &lado2);
-    printf("\nLado 3: ");
-    scanf(" %f", &lado3);
+    printf("\nside 1: ");
+    scanf(" %f", &side1);
+    printf("\nside 2: ");
+    scanf(" %f", &side2);
+    printf("\nside 3: ");
+    scanf(" %f", &side3);
 
-    hipotenusa1 = sqrt(pow(lado2, 2) + pow(lado3, 2));
-    hipotenusa2 = sqrt(pow(lado1, 2) + pow(lado3, 2));
-    hipotenusa3 = sqrt(pow(lado1, 2) + pow(lado2, 2));
+    /*We need the hypotenuse formula to check if the the triangle is rectangle*/
+    hypotenuse1 = sqrt(pow(side2, 2) + pow(side3, 2));
+    hypotenuse2 = sqrt(pow(side1, 2) + pow(side3, 2));
+    hypotenuse3 = sqrt(pow(side1, 2) + pow(side2, 2));
 
-    if (lado1 + lado2 >= lado3 && lado1 + lado3 >= lado2 && lado2 + lado3 >= lado1)
+    if (side1 + side2 >= side3 && side1 + side3 >= side2 && side2 + side3 >= side1) //the sum of 2 sides have to be greater than 1 side
     {
-        printf("\nEsse triangulo existe e é: ");
+        printf("\nThere is this triangle and is: ");
         
-        if (lado1 == lado2 || lado2 == lado3 || lado1 == lado3)
+        if (side1 == side2 || side2 == side3 || side1 == side3)
         {
-            if (lado1 == lado2 && lado1 == lado3)
-                printf("\nEQUILATERO");
+            if (side1 == side2 && side1 == side3)
+                printf("\nEQUILATERAL");
                 
             else 
-                printf("\nISOCELES");
+                printf("\nISOSCELES");
         }
 
-        else if (lado1 == hipotenusa1 || lado2 == hipotenusa2 || lado3 == hipotenusa3)
-            printf("\nRETANGULO");
+        else if (side1 == hypotenuse1 || side2 == hypotenuse2 || side3 == hypotenuse3)
+            printf("\nRECTANGULAR");
 
         else
         {
-            printf("\nESCALENO");
+            printf("\nSCALENE");
         } 
     }
 
     else
-        printf("\nNão é possível formar esse triangulo"); 
+        printf("\nIsn't there this triangle"); 
 }
